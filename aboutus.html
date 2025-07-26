@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <title>Bornagain</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+  </head>
+  <body class="bg-gray-900 text-white">
+    <!-- Header with Navbar -->
+    <header
+      x-data="{ open: false }"
+      class="sticky top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md px-6 lg:px-20 py-4 flex items-center justify-between transition-all duration-300 shadow-sm"
+    >
+      <!-- Logo -->
+      <div class="flex items-center space-x-2">
+        <img src="favicon.png" alt="Logo" class="w-10 h-10" />
+        <span class="text-2xl sm:text-3xl font-extrabold text-orange-500"
+          >Bornagain Rubber</span
+        >
+      </div>
+
+      <!-- Desktop Menu -->
+      <nav
+        class="hidden lg:flex space-x-10 text-lg font-semibold text-gray-800"
+      >
+        <a href="index.html" class="hover:text-orange-500 transition">Home</a>
+        <a href="aboutus.html" class="text-orange-500 transition">About Us</a>
+        <a href="Strategy.html" class="hover:text-orange-500 transition"
+          >Strategies</a
+        >
+        <a href="contact.html" class="hover:text-orange-500 transition"
+          >How to Partner</a
+        >
+      </nav>
+
+      <!-- Call Info (Desktop) -->
+      <div class="hidden lg:flex items-center gap-2 text-base font-semibold text-orange-500">
+   
+    <a href="tel:+919677239022"
+   class="inline-flex items-center gap-2 px-4 py-2 bg-orange-500 text-white font-semibold rounded-lg shadow hover:bg-orange-600 transition">
+   <i class="fas fa-phone"></i> Call Now
+</a>
+
+  </div>
+
+      <!-- Hamburger (Mobile) -->
+      <div class="lg:hidden">
+        <button
+          @click="open = !open"
+          class="text-orange-600 focus:outline-none"
+        >
+          <svg
+            x-show="!open"
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+          <svg
+            x-show="open"
+            class="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div
+        x-show="open"
+        @click.away="open = false"
+        x-transition
+        class="absolute top-full left-0 w-full bg-white text-gray-800 flex flex-col items-center py-6 lg:hidden space-y-4 shadow-lg z-40"
+      >
+        <a href="index.html" class="hover:text-orange-500 text-lg font-semibold"
+          >Home</a
+        >
+        <a
+          href="aboutus.html"
+          class="hover:text-orange-500 text-lg font-semibold"
+          >About Us</a
+        >
+        <a
+          href="Strategy.html"
+          class="hover:text-orange-500 text-lg font-semibold"
+          >Strategies</a
+        >
+        <a
+          href="contact.html"
+          class="hover:text-orange-500 text-lg font-semibold"
+          >How to Partner</a
+        >
+        <div class="text-orange-500 text-sm pt-4 font-medium">
+          <a
+            href="tel:+919677239022"
+            class="flex lg:hidden items-center gap-2 px-4 py-2 bg-orange-500 text-white font-semibold rounded-lg shadow hover:bg-orange-600 transition"
+          >
+            <i class="fas fa-phone"></i>
+            Call Now
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section
+      class="relative bg-center bg-cover bg-fixed h-[80vh] flex items-center"
+      style="
+        background-image: url('https://demo.awaikenthemes.com/toplax/wp-content/uploads/2024/11/page-header-bg.jpg');
+      "
+    >
+      <!-- Dark overlay -->
+      <div id="hero" class="absolute inset-0 bg-black/60 z-0"></div>
+
+      <!-- Content -->
+      <div
+        class="relative z-10 w-full text-white px-6 lg:px-24 max-w-screen-2xl mx-auto"
+      >
+        <div class="flex flex-col space-y-4">
+          <!-- Breadcrumb -->
+          <div
+            class="text-sm text-orange-400 font-semibold flex items-center space-x-1"
+          >
+            <a href="index.html" class="hover:underline">Home</a>
+            <span>•</span>
+            <span>About Us</span>
+          </div>
+
+          <!-- Heading -->
+          <h1 class="text-5xl font-extrabold tracking-tight">
+            About <span class="text-orange-500">Us</span>
+          </h1>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="bg-white py-20 px-6 sm:px-10 lg:px-24">
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+      >
+        <!-- Text Content -->
+        <div data-aos="fade-right">
+          <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-6">
+            About <span class="text-orange-500">BornAgain Rubber</span>
+          </h2>
+
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            <strong>BornAgain Rubber</strong> empowers sick and declining
+            rubber-based industries through actionable revival strategies,
+            process innovation, and expert insights. We’re not just consultants,
+            we are revival partners.
+          </p>
+
+          <p class="text-lg text-gray-700 leading-relaxed mb-6">
+            With deep industry roots and real-world experience, we help MSMEs
+            across India restructure, modernize, and transform. From compounding
+            factories to latex processing units, we build strategies that work.
+          </p>
+
+          <ul class="list-disc pl-5 text-gray-700 space-y-2 mb-6">
+            <li>Sector-specific production optimization</li>
+            <li>Customized business revival roadmaps</li>
+            <li>Market diversification and machinery upgrades</li>
+            <li>Eco-compliance & safety enhancements</li>
+          </ul>
+
+          <div class="mt-4 text-xl font-semibold text-orange-600">
+            ✦ Because your factory deserves a second chance, not a shutdown.
+          </div>
+        </div>
+
+        <!-- Image -->
+        <div data-aos="fade-right">
+          <img
+            src="aboutimgae.jpg"
+            alt="BornAgain Rubber"
+            class="rounded-xl shadow-xl object-cover w-full h-[32rem] sm:h-[36rem] md:h-[38rem] hover:scale-105 transition duration-500 ease-in-out"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Parallax Our Approach Section -->
+    <section
+      class="relative bg-fixed bg-center bg-cover text-white parallax"
+      style="
+        background-image: url('https://demo.awaikenthemes.com/toplax/wp-content/uploads/2024/11/mission-image.jpg');
+      "
+    >
+      <div class="absolute inset-0 bg-black/70"></div>
+
+      <div
+        class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-24 py-24 sm:py-28"
+      >
+        <p
+          class="flex items-center gap-2 text-xs sm:text-sm font-semibold text-orange-400 uppercase tracking-widest"
+          data-aos="fade-right"
+        >
+          <img
+            src="https://img.icons8.com/ios-filled/20/faad14/settings.png"
+            alt="Gear"
+          />
+          Our Approach
+        </p>
+        <h1
+          class="text-2xl sm:text-4xl md:text-5xl font-extrabold mt-4 leading-snug"
+          data-aos="fade-up"
+        >
+          Empowering Sustainable <br />
+          <span class="text-orange-400">Growth in Industry</span>
+        </h1>
+        <p
+          class="mt-4 sm:mt-6 text-sm sm:text-lg font-light text-white/90 max-w-2xl"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          We provide a wide range of solutions tailored to meet the needs of
+          modern industries – from precision manufacturing and automation to
+          custom engineering and scalable logistics.
+        </p>
+      </div>
+    </section>
+
+    <section
+      class="relative bg-gradient-to-tr from-orange-100 to-white py-16 px-4 sm:px-6 lg:px-24"
+    >
+      <div class="max-w-7xl mx-auto grid lg:grid-cols-4 gap-10">
+        <!-- Tab Buttons (Stacked on all screen sizes) -->
+        <div class="flex flex-col gap-4">
+          <button
+            onclick="showTab('mission')"
+            id="mission-btn"
+            class="tab-btn group p-5 bg-white/30 backdrop-blur-md border border-orange-200 rounded-2xl shadow-md hover:scale-105 hover:shadow-orange-200 transition-all duration-300 w-full"
+          >
+            <div class="text-3xl group-hover:animate-bounce">🎯</div>
+            <h4
+              class="text-xl font-bold mt-2 text-orange-700 group-hover:text-orange-900"
+            >
+              Mission
+            </h4>
+          </button>
+
+          <button
+            onclick="showTab('vision')"
+            id="vision-btn"
+            class="tab-btn group p-5 bg-white/30 backdrop-blur-md border border-gray-200 rounded-2xl shadow-md hover:scale-105 hover:shadow-gray-300 transition-all duration-300 w-full"
+          >
+            <div class="text-3xl group-hover:animate-bounce">🌍</div>
+            <h4
+              class="text-xl font-bold mt-2 text-orange-700 group-hover:text-orange-900"
+            >
+              Vision
+            </h4>
+          </button>
+
+          <button
+            onclick="showTab('value')"
+            id="value-btn"
+            class="tab-btn group p-5 bg-white/30 backdrop-blur-md border border-gray-200 rounded-2xl shadow-md hover:scale-105 hover:shadow-gray-300 transition-all duration-300 w-full"
+          >
+            <div class="text-3xl group-hover:animate-bounce">💎</div>
+            <h4
+              class="text-xl font-bold mt-2 text-orange-700 group-hover:text-orange-900"
+            >
+              Values
+            </h4>
+          </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="lg:col-span-3 pt-8 lg:pt-0">
+         
+          <!-- Mission -->
+<div id="mission" class="tab-content space-y-6 transition-all duration-500">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+    <!-- Text Content -->
+    <div class="space-y-6">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-orange-600">
+        Our Mission
+      </h2>
+      <p class="text-gray-700 text-lg leading-relaxed">
+        To transform industries through sustainability, tech-driven manufacturing, and human-centered design.
+      </p>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <li class="bg-white p-4 rounded-xl text-black shadow-md hover:shadow-orange-200">
+          ✔️ Eco-friendly Processes
+        </li>
+        <li class="bg-white p-4 rounded-xl text-black shadow-md hover:shadow-orange-200">
+          ✔️ Tech Innovation
+        </li>
+        <li class="bg-white p-4 rounded-xl text-black shadow-md hover:shadow-orange-200">
+          ✔️ Global Empowerment
+        </li>
+        <li class="bg-white p-4 rounded-xl text-black shadow-md hover:shadow-orange-200">
+          ✔️ Quality Commitment
+        </li>
+      </ul>
+    </div>
+
+    <!-- Image -->
+    <div class="w-full flex justify-center">
+      <img
+        src="data:image/jpeg;base64,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"
+        alt="Mission Image"
+        class="rounded-2xl shadow-2xl w-full max-w-sm"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- Vision -->
+<div id="vision" class="tab-content hidden transition-all duration-500">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+    <!-- Text Content -->
+    <div class="space-y-6">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-orange-600">
+        Our Vision
+      </h2>
+      <p class="text-gray-700 text-lg leading-relaxed">
+        To lead the future of sustainable industry with impactful products and empowered teams.
+      </p>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <li class="bg-white p-4 rounded-xl text-black shadow-md hover:shadow-blue-200">
+          🌟 Global Innovation
+        </li>
+        <li class="bg-white p-4 rounded-xl text-black shadow-md hover:shadow-blue-200">
+          🌟 Workforce Empowerment
+        </li>
+        <li class="bg-white p-4 rounded-xl text-black shadow-md hover:shadow-blue-200">
+          🌟 Planet-first Thinking
+        </li>
+      </ul>
+    </div>
+
+    <!-- Image -->
+    <div class="w-full flex justify-center">
+      <img
+        src="data:image/jpeg;base64,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"
+        alt="Vision Image"
+        class="rounded-2xl shadow-2xl w-full max-w-sm"
+      />
+    </div>
+  </div>
+</div>
+
+<!-- Values -->
+<div id="value" class="tab-content hidden transition-all duration-500">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+    <!-- Text Content -->
+    <div class="space-y-6">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-orange-600">
+        Our Values
+      </h2>
+      <p class="text-gray-700 text-lg leading-relaxed">
+        Our core beliefs reflect integrity, innovation, and a people-first culture that builds long-term trust.
+      </p>
+      <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <li class="bg-white p-4 rounded-xl text-black shadow-md hover:shadow-purple-200">
+          💡 Integrity & Trust
+        </li>
+        <li class="bg-white p-4 rounded-xl text-black shadow-md hover:shadow-purple-200">
+          💡 Diversity & Respect
+        </li>
+        <li class="bg-white p-4 rounded-xl text-black shadow-md hover:shadow-purple-200">
+          💡 Growth Mindset
+        </li>
+      </ul>
+    </div>
+
+    <!-- Image -->
+    <div class="w-full flex justify-center">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQ--weumgcOpQvIoklaFR3BzuISUXk6gc0KA&s"
+        alt="Values Image"
+        class="rounded-2xl shadow-2xl w-full max-w-sm"
+      />
+    </div>
+  </div>
+</div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section
+      class="bg-gradient-to-br from-white via-orange-50 to-yellow-50 py-24 px-6 sm:px-10 lg:px-24"
+    >
+      <div class="max-w-7xl mx-auto text-center">
+        <p
+          class="text-sm font-semibold uppercase text-orange-500 tracking-widest mb-4"
+          data-aos="fade-up"
+        >
+          Why Choose Us
+        </p>
+        <h2
+          class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-12"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          BornAgain Brings
+          <span class="text-orange-500">Real Industrial Impact</span>
+        </h2>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-left">
+  <!-- 1 -->
+  <div
+    class="p-6 bg-white rounded-xl border-t-4 border-orange-500 shadow hover:shadow-md transition"
+    data-aos="fade-up"
+    data-aos-delay="100"
+  >
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/3597/3597087.png"
+      class="w-12 h-12 mb-4"
+      alt="On-site Execution Icon"
+    />
+    <h3 class="text-lg font-bold text-gray-800 mb-2">
+      On-site Execution
+    </h3>
+    <p class="text-sm text-gray-600">
+      We go beyond consulting. Our experts work directly at your plant
+      to implement and monitor the changes.
+    </p>
+  </div>
+
+  <!-- 2 -->
+  <div
+    class="p-6 bg-white rounded-xl border-t-4 border-orange-500 shadow hover:shadow-md transition"
+    data-aos="fade-up"
+    data-aos-delay="200"
+  >
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/1865/1865269.png"
+      class="w-12 h-12 mb-4"
+      alt="Cost Engineers Icon"
+    />
+    <h3 class="text-lg font-bold text-gray-800 mb-2">
+      Industrial Cost Engineers
+    </h3>
+    <p class="text-sm text-gray-600">
+      Our team includes cost engineers who identify hidden losses and
+      optimize production economics.
+    </p>
+  </div>
+
+  <!-- 3 -->
+  <div
+    class="p-6 bg-white rounded-xl border-t-4 border-orange-500 shadow hover:shadow-md transition"
+    data-aos="fade-up"
+    data-aos-delay="300"
+  >
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/3417/3417963.png"
+      class="w-12 h-12 mb-4"
+      alt="Tech-driven SOP Icon"
+    />
+    <h3 class="text-lg font-bold text-gray-800 mb-2">
+      Tech-driven SOP Deployment
+    </h3>
+    <p class="text-sm text-gray-600">
+  From production lines to Quality Control (QC), we develop and deploy
+  Standard Operating Procedures (SOPs) using modern tools and dashboards.
+</p>
+
+  </div>
+
+  <!-- 4 -->
+  <div
+    class="p-6 bg-white rounded-xl border-t-4 border-orange-500 shadow hover:shadow-md transition"
+    data-aos="fade-up"
+    data-aos-delay="400"
+  >
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/4333/4333609.png"
+      class="w-12 h-12 mb-4"
+      alt="Training Icon"
+    />
+    <h3 class="text-lg font-bold text-gray-800 mb-2">
+      Worker Training Included
+    </h3>
+    <p class="text-sm text-gray-600">
+      We uplift your team with hands-on training,
+      SOP (Standard Operating Procedure) walkthroughs, and
+      performance coaching at every level.
+    </p>
+  </div>
+</div>
+
+      </div>
+    </section>
+
+    <section class="bg-orange-100 py-16 px-6 sm:px-10 lg:px-24">
+      <div class="max-w-5xl mx-auto">
+        <h2
+          class="text-3xl sm:text-4xl font-bold text-gray-900 text-center mb-10"
+        >
+          Frequently Asked Questions
+        </h2>
+
+        <div class="space-y-6" x-data="{ selected: null }">
+          <!-- FAQ 1 -->
+          <div
+            class="border border-orange-300 rounded-xl shadow-sm overflow-hidden"
+          >
+            <button
+              @click="selected !== 1 ? selected = 1 : selected = null"
+              class="w-full flex justify-between items-center px-6 py-4 text-left font-medium text-gray-800 hover:bg-orange-50 focus:outline-none"
+            >
+              <span>What industries do you consult for?</span>
+              <svg
+                :class="selected === 1 ? 'rotate-180' : ''"
+                class="w-5 h-5 transform transition-transform"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              x-show="selected === 1"
+              x-transition
+              class="px-6 pb-4 text-gray-600"
+            >
+              We specialize in consulting for rubber, plastics, and moulding
+              manufacturing industries — particularly sick or struggling units
+              seeking revival, diversification, or optimization.
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div
+            class="border border-orange-300 rounded-xl shadow-sm overflow-hidden"
+          >
+            <button
+              @click="selected !== 2 ? selected = 2 : selected = null"
+              class="w-full flex justify-between items-center px-6 py-4 text-left font-medium text-gray-800 hover:bg-orange-50 focus:outline-none"
+            >
+              <span>Do you offer on-site consultations?</span>
+              <svg
+                :class="selected === 2 ? 'rotate-180' : ''"
+                class="w-5 h-5 transform transition-transform"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              x-show="selected === 2"
+              x-transition
+              class="px-6 pb-4 text-gray-600"
+            >
+              Yes. Based on the project scope, we offer both on-site and virtual
+              consultations. We also conduct audits, assessments, and training
+              at client locations.
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div
+            class="border border-orange-300 rounded-xl shadow-sm overflow-hidden"
+          >
+            <button
+              @click="selected !== 3 ? selected = 3 : selected = null"
+              class="w-full flex justify-between items-center px-6 py-4 text-left font-medium text-gray-800 hover:bg-orange-50 focus:outline-none"
+            >
+              <span>How do I schedule a consultation?</span>
+              <svg
+                :class="selected === 3 ? 'rotate-180' : ''"
+                class="w-5 h-5 transform transition-transform"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              x-show="selected === 3"
+              x-transition
+              class="px-6 pb-4 text-gray-600"
+            >
+              You can fill out our consultation form on the website. Once we
+              receive your request, our team will reach out to confirm your
+              preferred date, time, and consultation type.
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div
+            class="border border-orange-300 rounded-xl shadow-sm overflow-hidden"
+          >
+            <button
+              @click="selected !== 4 ? selected = 4 : selected = null"
+              class="w-full flex justify-between items-center px-6 py-4 text-left font-medium text-gray-800 hover:bg-orange-50 focus:outline-none"
+            >
+              <span>What kind of support do you provide?</span>
+              <svg
+                :class="selected === 4 ? 'rotate-180' : ''"
+                class="w-5 h-5 transform transition-transform"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+            <div
+              x-show="selected === 4"
+              x-transition
+              class="px-6 pb-4 text-gray-600"
+            >
+              We offer support in areas like cost optimization, SOP creation,
+              process improvement, team training, product diversification, R&D
+              guidance, and more — tailored to your company’s needs.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WhatsApp Chat Button -->
+    <a
+      id="whatsappBtn"
+      href="https://wa.me/919677239022"
+      target="_blank"
+      aria-label="Chat on WhatsApp"
+      class="hidden fixed bottom-8 right-4 z-50 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg flex items-center justify-center text-xl transition animate-bounce"
+    >
+      <i class="fab fa-whatsapp"></i>
+      <span
+        class="absolute -top-14 right-0 hidden group-hover:block text-sm bg-orange-400 text-white px-2 py-1 rounded shadow-md"
+      >
+        Chat on WhatsApp
+      </span>
+    </a>
+
+    <!-- Location Section -->
+    <div
+      class="w-full py-20 bg-cover bg-center text-white"
+      style="
+        background-image: url('https://api.sickft.hu/uploads/large_Background_Location_f59a2d9feb.jpg');
+      "
+    >
+      <div class="max-w-screen-2xl px-6 sm:px-12 lg:px-24 mx-auto">
+        <div class="flex flex-col lg:flex-row gap-16">
+          <div class="flex-1">
+            <h2 class="text-2xl font-extrabold tracking-tight text-white">
+              Location
+            </h2>
+            <div class="my-3 space-x-1">
+              <span
+                class="inline-block w-2 h-2 bg-yellow-400 rounded-full"
+              ></span>
+              <span
+                class="inline-block w-2 h-2 bg-yellow-400 rounded-full"
+              ></span>
+              <span
+                class="inline-block w-2 h-2 bg-yellow-400 rounded-full"
+              ></span>
+            </div>
+            <p class="mt-4 text-gray-200 leading-relaxed text-base max-w-md">
+              We are based in Tamil Nadu, India — offering strategic consulting
+              to manufacturers across India and international markets.
+            </p>
+            <div class="mt-8 space-y-4 text-gray-100 text-sm">
+              <div>
+                <span
+                  class="inline-block w-2 h-2 bg-yellow-400 rounded-full mr-2"
+                ></span>
+                 +91 96772 39022
+              </div>
+              <div>
+                <span
+                  class="inline-block w-2 h-2 bg-yellow-400 rounded-full mr-2"
+                ></span>
+                ranksglobal@rubberconsult.com
+              </div>
+              <div>
+                <span
+                  class="inline-block w-2 h-2 bg-yellow-400 rounded-full mr-2"
+                ></span>
+                120, Kgt nagar, Kattuppakkam,  Chennai-600056, Tamil Nadu, India
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-1 flex justify-center items-center">
+            <img
+              src="https://api.sickft.hu/uploads/small_World_Map_3ce88eadc9.png"
+              class="w-full max-w-md mt-10 lg:mt-0"
+              alt="World Map"
+            />
+          </div>
+
+          <div class="flex-1">
+            <h2 class="text-2xl font-extrabold tracking-tight text-white">
+              Follow Us
+            </h2>
+            <div class="my-3 space-x-1">
+              <span
+                class="inline-block w-2 h-2 bg-yellow-400 rounded-full"
+              ></span>
+              <span
+                class="inline-block w-2 h-2 bg-yellow-400 rounded-full"
+              ></span>
+              <span
+                class="inline-block w-2 h-2 bg-yellow-400 rounded-full"
+              ></span>
+            </div>
+            <p class="text-gray-200 mt-4 leading-relaxed text-base">
+              Follow us on LinkedIn and other platforms to get insights, client
+              success stories, and industry trends.
+            </p>
+
+            <!-- Social Icons with rounded background -->
+            <div class="flex gap-4 mt-6">
+              <!-- WhatsApp -->
+              <a
+                href="https://wa.me/919677239022"
+                target="_blank"
+                aria-label="WhatsApp"
+                class="w-10 h-10 flex items-center justify-center bg-green-500 text-white text-xl rounded-full hover:bg-green-600 transition shadow-md"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </a>
+
+              <!-- Instagram -->
+              <a
+                href="https://instagram.com/yourhandle"
+                target="_blank"
+                aria-label="Instagram"
+                class="w-10 h-10 flex items-center justify-center bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 text-white text-xl rounded-full hover:brightness-110 transition shadow-md"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+
+              <!-- Facebook -->
+              <a
+                href="https://facebook.com/yourpage"
+                target="_blank"
+                aria-label="Facebook"
+                class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white text-xl rounded-full hover:bg-blue-700 transition shadow-md"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+
+<!-- website -->
+  <a
+    href="https://bornagainrubber.com"
+    target="_blank"
+    aria-label="Website"
+    class="w-10 h-10 flex items-center justify-center bg-orange-500 text-white text-xl rounded-full hover:bg-gray-900 transition shadow-md"
+  >
+    <i class="fas fas fa-globe"></i>
+  </a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white text-gray-800 py-20 px-6 sm:px-12 lg:px-24">
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-left"
+      >
+        <!-- About Bornagain -->
+        <div>
+          <h2 class="text-xl font-bold mb-3">About Us</h2>
+          <div class="flex space-x-1 mb-6">
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+          </div>
+          <div class="flex flex-col space-y-4 text-sm text-gray-600">
+            <a href="aboutus.html" class="hover:text-yellow-500 transition"
+              >Who We Are</a
+            >
+            <a href="contact.html" class="hover:text-yellow-500 transition"
+              >Request a Consultation</a
+            >
+          </div>
+        </div>
+
+        <!-- Our Services -->
+        <div>
+          <h2 class="text-xl font-bold mb-3">Consulting Services</h2>
+          <div class="flex space-x-1 mb-6">
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+          </div>
+          <div class="space-y-4 text-sm text-gray-600">
+            <div class="grid grid-cols-2 gap-x-4">
+              <span>Business Strategy</span>
+              <span>Cost Optimization</span>
+            </div>
+            <div class="grid grid-cols-2 gap-x-4">
+              <span>Team Training</span>
+              <span>Startup Guidance</span>
+            </div>
+            <div class="grid grid-cols-2 gap-x-4">
+              <span>ISO/Compliance Help</span>
+              <span>Growth Consulting</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Let's Connect -->
+        <div>
+          <h2 class="text-xl font-bold mb-3">Let’s Connect</h2>
+          <div class="flex space-x-1 mb-6">
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+          </div>
+          <p class="text-sm text-gray-700 mb-6 leading-relaxed">
+            We work closely with struggling and startup companies in the rubber
+            and moulding industries. Let’s talk about how we can help you
+            transform and thrive.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bottom Bar -->
+    <div
+      class="bg-neutral-900 text-gray-200 text-xs h-14 flex flex-col sm:flex-row items-center justify-between px-6 gap-2"
+    >
+      <div class="font-medium">
+        Designed by
+        <a
+          href="https://technovuz.in"
+          target="_blank"
+          class="text-yellow-400 hover:underline"
+          >Technovuz Solutions</a
+        >
+      </div>
+      <div>© 2025 Bornagain Rubber. All rights reserved.</div>
+    </div>
+
+    <!-- Include Location, Footer, and Script -->
+    <!-- You already pasted the updated version with orange in the previous steps -->
+    <!-- You can now paste that "Location & Footer" section with orange bubbles and icons from the previous message -->
+
+    <!-- Carousel Script -->
+  </body>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+
+    const hero = document.getElementById("hero");
+    const whatsappBtn = document.getElementById("whatsappBtn");
+
+    window.addEventListener("scroll", () => {
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+      if (window.scrollY > heroBottom - 100) {
+        whatsappBtn.classList.remove("hidden");
+      } else {
+        whatsappBtn.classList.add("hidden");
+      }
+    });
+  </script>
+
+  <script>
+    function showTab(tabId) {
+      const tabs = ["mission", "vision", "value"];
+      tabs.forEach((id) => {
+        document.getElementById(id).classList.add("hidden");
+        document
+          .getElementById(id + "-btn")
+          .classList.remove("ring-4", "ring-orange-300");
+      });
+      document.getElementById(tabId).classList.remove("hidden");
+      document
+        .getElementById(tabId + "-btn")
+        .classList.add("ring-4", "ring-orange-300");
+    }
+
+    // Default tab
+    showTab("mission");
+  </script>
+</html>

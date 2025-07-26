@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <title>Bornagain</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+  </head>
+  <body class="bg-gray-900 text-white">
+    <!-- Header with Navbar -->
+    <header
+  x-data="{ open: false }"
+  class="sticky top-0 left-0 w-full z-50 bg-white/90 backdrop-blur-md px-6 lg:px-20 py-4 flex items-center justify-between transition-all duration-300 shadow-sm"
+>
+  <!-- Logo -->
+  <div class="flex items-center space-x-2">
+    <img
+      src="favicon.png"
+      alt="Logo"
+      class="w-10 h-10"
+    />
+    <span class="text-2xl sm:text-3xl font-extrabold text-orange-500">Bornagain Rubber</span>
+  </div>
+
+  <!-- Desktop Menu -->
+  <nav class="hidden lg:flex space-x-10 text-lg font-semibold text-gray-800">
+    <a href="index.html" class="text-orange-500 transition">Home</a>
+    <a href="aboutus.html" class="hover:text-orange-500 transition">About Us</a>
+    <a href="Strategy.html" class="hover:text-orange-500 transition">Strategies</a>
+    <a href="contact.html" class="hover:text-orange-500 transition">How to Partner</a>
+  </nav>
+
+  <!-- Call Info (Desktop) -->
+  <div class="hidden lg:flex items-center gap-2 text-base font-semibold text-orange-500">
+   
+    <a href="tel:+919677239022"
+   class="inline-flex items-center gap-2 px-4 py-2 bg-orange-500 text-white font-semibold rounded-lg shadow hover:bg-orange-600 transition">
+   <i class="fas fa-phone"></i> Call Now
+</a>
+
+  </div>
+
+  <!-- Hamburger (Mobile) -->
+  <div class="lg:hidden">
+    <button @click="open = !open" class="text-orange-600 focus:outline-none">
+      <svg x-show="!open" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      <svg x-show="open" class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    x-show="open"
+    @click.away="open = false"
+    x-transition
+    class="absolute top-full left-0 w-full bg-white text-gray-800 flex flex-col items-center py-6 lg:hidden space-y-4 shadow-lg z-40"
+  >
+    <a href="index.html" class="hover:text-orange-500 text-lg font-semibold">Home</a>
+    <a href="aboutus.html" class="hover:text-orange-500 text-lg font-semibold">About Us</a>
+    <a href="Strategy.html" class="hover:text-orange-500 text-lg font-semibold">Strategies</a>
+    <a href="contact.html" class="hover:text-orange-500 text-lg font-semibold">How to Partner</a>
+    <div class="text-orange-500 text-sm pt-4 font-medium">
+<a href="tel:+919677239022" class="flex lg:hidden items-center gap-2 px-4 py-2 bg-orange-500 text-white font-semibold rounded-lg shadow hover:bg-orange-600 transition">
+  <i class="fas fa-phone"></i>
+  Call Now
+</a>
+    </div>
+  </div>
+</header>
+
+
+    <!-- Hero Section -->
+<section
+  x-data="carousel()"
+  x-init="start()"
+  class="relative w-full h-[100vh] sm:h-[100vh] overflow-hidden"
+>
+  <!-- Background Images -->
+  <template x-for="(image, index) in currentImages" :key="index">
+    <div
+      x-show="current === index"
+      x-transition:enter="transition-opacity duration-1000"
+      x-transition:enter-start="opacity-0"
+      x-transition:leave="transition-opacity duration-1000"
+      x-transition:leave-end="opacity-0"
+      class="absolute inset-0 w-full h-full bg-no-repeat bg-cover bg-center sm:bg-center bg-[top]"
+      :style="'background-image: url(' + image + ')'"
+    ></div>
+  </template>
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black/70 z-10"></div>
+
+  <!-- Hero Content -->
+  <div
+    id="hero"
+    class="relative z-20 max-w-screen-2xl mx-auto px-6 sm:px-10 lg:px-24 h-full flex items-center"
+  >
+    <div class="max-w-3xl text-left mt-20 sm:mt-14 lg:mt-[10rem]">
+      <p class="uppercase tracking-wider text-sm text-orange-300 mb-4">
+        Revitalizing Rubber Industries
+      </p>
+
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-6">
+        Practical Solutions for
+        <span class="text-orange-400 block sm:inline">
+          Transformation and Sustainable Growth
+        </span>
+      </h1>
+
+      <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-8">
+        Born Again Rubber helps struggling rubber & moulding units rise again through innovation,
+        expert guidance, and strategies that drive results.
+      </p>
+
+      <a
+        href="Strategy.html"
+        class="inline-flex items-center px-6 py-3 sm:px-8 sm:py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-base sm:text-lg rounded-lg transition-all"
+      >
+        Explore Our Services
+      </a>
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- ABOUT SECTION -->
+   <section class="bg-white py-16 px-4 sm:px-6 lg:px-24">
+  <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+    <!-- Image Section -->
+    <div data-aos="fade-up" data-aos-duration="1000">
+      <img
+        src="https://demo.awaikenthemes.com/toplax/wp-content/uploads/2024/11/about-img-2.jpg"
+        alt="Revitalizing the Rubber Industry"
+        class="w-full rounded-xl shadow-2xl border border-gray-200"
+      />
+    </div>
+
+    <!-- Text Section -->
+    <div data-aos="fade-right" data-aos-duration="1000">
+      <p
+        class="text-lg font-semibold text-orange-500 uppercase tracking-widest mb-3 flex items-center"
+      >
+    
+        About the Initiative
+      </p>
+
+      <h2 class="text-4xl md:text-5xl font-bold text-gray-900 leading-snug mb-4">
+        Revitalizing the <span class="text-orange-500">Rubber Industry</span>
+      </h2>
+
+      <p class="text-gray-600 mb-6">
+        India’s rubber industry is facing critical challenges from outdated systems and high operating costs to shrinking innovation and intense global competition. <strong>Born Again Rubber</strong> is here to rewrite the story with proven strategies, project proposals, and expert guidance that can bring struggling units back to life.
+      </p>
+
+ <ul class="space-y-4 mb-8">
+  <!-- Tile 1 -->
+  <li class="bg-orange-50 border border-orange-300 rounded-xl shadow-md p-5 flex items-start gap-4 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-orange-500 hover:bg-orange-100" data-aos="fade-up" data-aos-delay="100">
+    <i class="fas fa-industry text-orange-600 text-xl mt-1"></i>
+    <span class="text-gray-800 font-semibold">Reduce operational costs & modernize production systems</span>
+  </li>
+
+  <!-- Tile 2 -->
+  <li class="bg-orange-50 border border-orange-300 rounded-xl shadow-md p-5 flex items-start gap-4 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-orange-500 hover:bg-orange-100" data-aos="fade-up" data-aos-delay="200">
+    <i class="fas fa-lightbulb text-orange-600 text-xl mt-1"></i>
+    <span class="text-gray-800 font-semibold">Adopt innovative processes and diversify into new markets</span>
+  </li>
+
+  <!-- Tile 3 -->
+  <li class="bg-orange-50 border border-orange-300 rounded-xl shadow-md p-5 flex items-start gap-4 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-orange-500 hover:bg-orange-100" data-aos="fade-up" data-aos-delay="300">
+    <i class="fas fa-shield-alt text-orange-600 text-xl mt-1"></i>
+    <span class="text-gray-800 font-semibold">Implement safe practices for healthier work environments</span>
+  </li>
+
+  <!-- Tile 4 -->
+  <li class="bg-orange-50 border border-orange-300 rounded-xl shadow-md p-5 flex items-start gap-4 transition-all hover:-translate-y-1 hover:shadow-xl hover:border-orange-500 hover:bg-orange-100" data-aos="fade-up" data-aos-delay="400">
+    <i class="fas fa-cogs text-orange-600 text-xl mt-1"></i>
+<span class="text-gray-800 font-semibold">Revive your operations with smart data and Standard Operating Procedures (SOPs)-driven transformation.</span>
+  </li>
+</ul>
+
+
+
+
+  <!-- Rating Section -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-xl mx-auto mt-10">
+  
+  <!-- Rating Box -->
+  <div
+    class="bg-orange-50 border border-orange-200 hover:border-orange-400 transition-all rounded-xl shadow-md p-6 flex flex-col items-center justify-center text-center space-y-3"
+    data-aos="zoom-in"
+    data-aos-delay="200"
+  >
+    <!-- Rating Number -->
+    <h3 class="text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-br from-orange-500 to-orange-800">
+      4.9
+    </h3>
+
+    <!-- Star Icons -->
+    <div class="flex gap-1 text-yellow-400">
+      <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+        <path d="M10 15l-5.878 3.09 1.122-6.545L.489 6.91l6.567-.955L10 0l2.944 5.955 
+        6.567.955-4.755 4.635 1.122 6.545z" />
+      </svg>
+      <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+        <path d="M10 15l-5.878 3.09 1.122-6.545L.489 6.91l6.567-.955L10 0l2.944 5.955 
+        6.567.955-4.755 4.635 1.122 6.545z" />
+      </svg>
+      <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+        <path d="M10 15l-5.878 3.09 1.122-6.545L.489 6.91l6.567-.955L10 0l2.944 5.955 
+        6.567.955-4.755 4.635 1.122 6.545z" />
+      </svg>
+      <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+        <path d="M10 15l-5.878 3.09 1.122-6.545L.489 6.91l6.567-.955L10 0l2.944 5.955 
+        6.567.955-4.755 4.635 1.122 6.545z" />
+      </svg>
+      <svg class="w-5 h-5 fill-current" viewBox="0 0 20 20">
+        <path d="M10 15l-5.878 3.09 1.122-6.545L.489 6.91l6.567-.955L10 0l2.944 5.955 
+        6.567.955-4.755 4.635 1.122 6.545z" />
+      </svg>
+    </div>
+
+    <!-- Reviews Text -->
+    <p class="text-sm text-gray-600">2K Verified Reviews</p>
+  </div>
+
+</div>
+
+  </div>
+</section>
+
+
+    <!-- SERVICES SECTION -->
+    <section
+      class="py-20 bg-gradient-to-br from-[#fff8f0] via-[#fef3c7] to-[#fde68a]"
+    >
+      <div class="max-w-screen-2xl mx-auto px-6 sm:px-10 lg:px-24 text-center">
+        <h2
+          class="text-4xl font-extrabold text-gray-800 mb-6"
+          data-aos="fade-up"
+        >
+          Our<span class="text-orange-500"> Consulting Services</span>
+        </h2>
+        <div
+          class="flex justify-center gap-1 mb-8"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
+          <span class="bg-yellow-500 w-2 h-2 rounded-full"></span>
+          <span class="bg-yellow-500 w-2 h-2 rounded-full"></span>
+          <span class="bg-yellow-500 w-2 h-2 rounded-full"></span>
+        </div>
+
+        <p
+          class="max-w-3xl mx-auto text-gray-700 text-lg leading-relaxed mb-14"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          We empower rubber and moulding businesses—from sick units to new
+          startups—through focused consulting that drives efficiency, profit,
+          and growth.
+        </p>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 text-left"
+        >
+          <!-- Repeatable service cards with AOS -->
+          <div
+            class="bg-white border border-yellow-200 p-6 rounded-xl shadow-md hover:shadow-xl hover:scale-[1.03] hover:border-yellow-400 hover:bg-yellow-50 transition-all duration-300 ease-in-out"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Business Strategy
+            </h3>
+            <p class="text-gray-600 text-lg ">
+              Define your niche, target market, and roadmap for profitability in
+              a competitive rubber and moulding space.
+            </p>
+          </div>
+
+          <div
+            class="bg-white border border-yellow-200 p-6 rounded-xl shadow-md hover:shadow-xl hover:scale-[1.03] hover:border-yellow-400 hover:bg-yellow-50 transition-all duration-300 ease-in-out"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Process Optimization
+            </h3>
+            <p class="text-gray-600 text-lg">
+              Minimize waste, improve quality, and streamline your moulding or
+              rubber manufacturing workflows.
+            </p>
+          </div>
+
+          <div
+            class="bg-white border border-yellow-200 p-6 rounded-xl shadow-md hover:shadow-xl hover:scale-[1.03] hover:border-yellow-400 hover:bg-yellow-50 transition-all duration-300 ease-in-out"
+            data-aos="zoom-in"
+            data-aos-delay="300"
+          >
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Cost Control & Pricing
+            </h3>
+            <p class="text-gray-600 text-lg">
+              Guidance on pricing models, profit margin improvement, and
+              sourcing best practices.
+            </p>
+          </div>
+
+          <div
+            class="bg-white border border-yellow-200 p-6 rounded-xl shadow-md hover:shadow-xl hover:scale-[1.03] hover:border-yellow-400 hover:bg-yellow-50 transition-all duration-300 ease-in-out"
+            data-aos="zoom-in"
+            data-aos-delay="400"
+          >
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Team Training</h3>
+            <p class="text-gray-600 text-lg">
+              Upskill your workers and management on production discipline,
+              quality control, and rubber-specific systems.
+            </p>
+          </div>
+
+          <div
+            class="bg-white border border-yellow-200 p-6 rounded-xl shadow-md hover:shadow-xl hover:scale-[1.03] hover:border-yellow-400 hover:bg-yellow-50 transition-all duration-300 ease-in-out"
+            data-aos="zoom-in"
+            data-aos-delay="500"
+          >
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Startup Guidance
+            </h3>
+            <p class="text-gray-600 text-lg">
+              Want to start a rubber business? We help you choose machines,
+              material suppliers, and market approach.
+            </p>
+          </div>
+
+          <div
+            class="bg-white border border-yellow-200 p-6 rounded-xl shadow-md hover:shadow-xl hover:scale-[1.03] hover:border-yellow-400 hover:bg-yellow-50 transition-all duration-300 ease-in-out"
+            data-aos="zoom-in"
+            data-aos-delay="600"
+          >
+            <h3 class="text-xl font-bold text-gray-800 mb-3">
+              Industry Compliance
+            </h3>
+            <p class="text-gray-600 text-lg">
+              Help with documentation, ISO certifications, quality audits, and
+              regulatory support.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="relative overflow-hidden py-20 bg-slate-50">
+      <div
+        class="max-w-screen-2xl mx-auto px-6 sm:px-10 lg:px-24 flex flex-col lg:flex-row items-center gap-12"
+      >
+        <!-- Image Column -->
+        <div class="relative w-full lg:w-1/2 group order-2 lg:order-1">
+          <div
+            class="overflow-hidden rounded-2xl shadow-2xl border-4 border-yellow-200 hover:scale-105 transition-transform duration-500"
+          >
+            <img
+              src="https://api.sickft.hu/uploads/medium_DSC_8837_d3c2271fa3.jpg"
+              alt="Consulting Team"
+              class="w-full h-[400px] lg:h-[500px] object-cover"
+            />
+          </div>
+          <!-- Decorative Glow -->
+          <div
+            class="absolute -bottom-10 -left-10 w-40 h-40 bg-yellow-300 rounded-full blur-3xl opacity-20 group-hover:opacity-40 transition duration-500"
+          ></div>
+        </div>
+
+        <!-- Text Column -->
+        <div class="w-full lg:w-1/2 order-1 lg:order-2">
+          <p
+            class="text-sm sm:text-base text-orange-700 font-semibold tracking-widest uppercase mb-4"
+          >
+            Why Choose Us
+          </p>
+
+          <h2
+            class="text-4xl sm:text-5xl font-extrabold text-gray-800 mb-6 leading-tight"
+          >
+            Your <span class="text-orange-600">Trusted Partner</span> in Growth
+          </h2>
+
+          <p class="text-gray-700 text-lg leading-relaxed mb-8">
+            Bornagain Consulting specializes in reviving struggling rubber,
+            plastic, and moulding companies. With decades of hands-on industry
+            experience, we guide you in scaling production, improving margins,
+            training your team, and achieving consistent profitability.
+          </p>
+
+          <a
+            href="contact.html"
+            class="inline-block bg-orange-500 text-white text-sm font-semibold uppercase px-6 py-3 rounded-md shadow-lg hover:shadow-xl hover:bg-orange-600 transition-all duration-300"
+          >
+            Request a Free Consultation
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="relative bg-orange-50 py-16 px-6 sm:px-12 lg:px-24 overflow-hidden">
+  <!-- Decorative Element -->
+  <div class="absolute inset-0 bg-gradient-to-tr from-orange-100/60 via-white/80 to-orange-200/60 blur-2xl opacity-40 pointer-events-none z-0"></div>
+
+  <div class="relative z-10 max-w-5xl mx-auto text-center">
+    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 leading-tight">
+      We Don’t Just Consult,
+      <span class="text-orange-500">We Transform..!</span>
+    </h2>
+
+    <p class="text-lg sm:text-xl text-gray-700 max-w-3xl mx-auto mb-8">
+      Old systems, rising costs, declining morale your business may feel stuck, but it’s not the end. It’s the beginning of a new chapter.
+    </p>
+
+    <div class="relative bg-white border-l-4 border-orange-500 p-6 rounded-xl shadow-xl">
+      <svg class="absolute top-[-1.25rem] left-4 bg-orange-500 text-white rounded-full w-10 h-10 p-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+      </svg>
+
+      <blockquote class="text-xl sm:text-2xl font-medium text-gray-800 leading-snug">
+        “We believe in the power of transformation. Just as rubber can be reborn, so too can businesses in this industry find new life and purpose.”
+      </blockquote>
+      <p class="mt-4 text-sm font-semibold text-orange-600 text-right">— The Born Again Rubber Team</p>
+    </div>
+  </div>
+</section>
+
+
+    <!-- WhatsApp Chat Button -->
+<a id="whatsappBtn"
+   href="https://wa.me/919677239022"
+   target="_blank"
+   aria-label="Chat on WhatsApp"
+   class="hidden fixed bottom-8 right-4 z-50 bg-green-500 hover:bg-green-600 text-white p-3 rounded-full shadow-lg flex items-center justify-center text-xl transition animate-bounce">
+  <i class="fab fa-whatsapp"></i>
+  <span class="absolute -top-14 right-0 hidden group-hover:block text-sm bg-orange-400 text-white px-2 py-1 rounded shadow-md">
+    Chat on WhatsApp
+  </span>
+</a>
+
+
+
+    <!-- Location Section -->
+    <div
+      class="w-full py-20 bg-cover bg-center text-white"
+      style="
+        background-image: url('https://api.sickft.hu/uploads/large_Background_Location_f59a2d9feb.jpg');
+      "
+    >
+      <div class="max-w-screen-2xl px-6 sm:px-12 lg:px-24 mx-auto">
+        <div class="flex flex-col lg:flex-row gap-16">
+          <div class="flex-1">
+            <h2 class="text-2xl font-extrabold tracking-tight text-white">
+              Location
+            </h2>
+            <div class="my-3 space-x-1">
+              <span
+                class="inline-block w-2 h-2 bg-yellow-400 rounded-full"
+              ></span>
+              <span
+                class="inline-block w-2 h-2 bg-yellow-400 rounded-full"
+              ></span>
+              <span
+                class="inline-block w-2 h-2 bg-yellow-400 rounded-full"
+              ></span>
+            </div>
+            <p class="mt-4 text-gray-200 leading-relaxed text-base max-w-md">
+              We are based in Tamil Nadu, India — offering strategic consulting
+              to manufacturers across India and international markets.
+            </p>
+            <div class="mt-8 space-y-4 text-gray-100 text-sm">
+              <div>
+                <span
+                  class="inline-block w-2 h-2 bg-yellow-400 rounded-full mr-2"
+                ></span>
+                 +91 96772 39022
+              </div>
+              <div>
+                <span
+                  class="inline-block w-2 h-2 bg-yellow-400 rounded-full mr-2"
+                ></span>
+                ranksglobal@rubberconsult.com
+              </div>
+              <div>
+                <span
+                  class="inline-block w-2 h-2 bg-yellow-400 rounded-full mr-2"
+                ></span>
+                120, Kgt nagar, Kattuppakkam,  Chennai-600056, Tamil Nadu, India
+              </div>
+            </div>
+          </div>
+
+          <div class="flex-1 flex justify-center items-center">
+            <img
+              src="https://api.sickft.hu/uploads/small_World_Map_3ce88eadc9.png"
+              class="w-full max-w-md mt-10 lg:mt-0"
+              alt="World Map"
+            />
+          </div>
+
+          
+<div class="flex-1">
+  <h2 class="text-2xl font-extrabold tracking-tight text-white">Follow Us</h2>
+  <div class="my-3 space-x-1">
+    <span class="inline-block w-2 h-2 bg-yellow-400 rounded-full"></span>
+    <span class="inline-block w-2 h-2 bg-yellow-400 rounded-full"></span>
+    <span class="inline-block w-2 h-2 bg-yellow-400 rounded-full"></span>
+  </div>
+  <p class="text-gray-200 mt-4 leading-relaxed text-base">
+    Follow us on LinkedIn and other platforms to get insights, client success
+    stories, and industry trends.
+  </p>
+
+  <!-- Social Icons with rounded background -->
+  <div class="flex gap-4 mt-6">
+  <!-- WhatsApp -->
+  <a
+    href="https://wa.me/919876543210"
+    target="_blank"
+    aria-label="WhatsApp"
+    class="w-10 h-10 flex items-center justify-center bg-green-500 text-white text-xl rounded-full hover:bg-green-600 transition shadow-md"
+  >
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Instagram -->
+  <a
+    href="https://instagram.com/yourhandle"
+    target="_blank"
+    aria-label="Instagram"
+    class="w-10 h-10 flex items-center justify-center bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 text-white text-xl rounded-full hover:brightness-110 transition shadow-md"
+  >
+    <i class="fab fa-instagram"></i>
+  </a>
+
+  <!-- Facebook -->
+  <a
+    href="https://facebook.com/yourpage"
+    target="_blank"
+    aria-label="Facebook"
+    class="w-10 h-10 flex items-center justify-center bg-blue-600 text-white text-xl rounded-full hover:bg-blue-700 transition shadow-md"
+  >
+    <i class="fab fa-facebook-f"></i>
+  </a>
+
+  <!-- website -->
+  <a
+    href="https://bornagainrubber.com"
+    target="_blank"
+    aria-label="Website"
+    class="w-10 h-10 flex items-center justify-center bg-orange-500 text-white text-xl rounded-full hover:bg-gray-900 transition shadow-md"
+  >
+    <i class="fas fas fa-globe"></i>
+  </a>
+
+</div>
+
+</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white text-gray-800 py-20 px-6 sm:px-12 lg:px-24">
+      <div
+        class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-left"
+      >
+        <!-- About Bornagain -->
+        <div>
+          <h2 class="text-xl font-bold mb-3">About Us</h2>
+          <div class="flex space-x-1 mb-6">
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+          </div>
+          <div class="flex flex-col space-y-4 text-sm text-gray-600">
+            <a href="aboutus.html" class="hover:text-yellow-500 transition"
+              >Who We Are</a
+            >
+            <a href="contact.html" class="hover:text-yellow-500 transition"
+              >Request a Consultation</a
+            >
+          </div>
+        </div>
+
+        <!-- Our Services -->
+        <div>
+          <h2 class="text-xl font-bold mb-3">Consulting Services</h2>
+          <div class="flex space-x-1 mb-6">
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+          </div>
+          <div class="space-y-4 text-sm text-gray-600">
+            <div class="grid grid-cols-2 gap-x-4">
+              <span>Business Strategy</span>
+              <span>Cost Optimization</span>
+            </div>
+            <div class="grid grid-cols-2 gap-x-4">
+              <span>Team Training</span>
+              <span>Startup Guidance</span>
+            </div>
+            <div class="grid grid-cols-2 gap-x-4">
+              <span>ISO/Compliance Help</span>
+              <span>Growth Consulting</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Let's Connect -->
+        <div>
+          <h2 class="text-xl font-bold mb-3">Let’s Connect</h2>
+          <div class="flex space-x-1 mb-6">
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+            <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+          </div>
+          <p class="text-sm text-gray-700 mb-6 leading-relaxed">
+            We work closely with struggling and startup companies in the rubber
+            and moulding industries. Let’s talk about how we can help you
+            transform and thrive.
+          </p>
+          
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bottom Bar -->
+    <div
+      class="bg-neutral-900 text-gray-200 text-xs h-14 flex flex-col sm:flex-row items-center justify-between px-6 gap-2"
+    >
+      <div class="font-medium">
+        Designed by
+        <a
+          href="https://technovuz.in"
+          target="_blank"
+          class="text-yellow-400 hover:underline"
+          >Technovuz Solutions</a
+        >
+      </div>
+      <div>© 2025 Bornagain. All rights reserved.</div>
+    </div>
+
+    <!-- Include Location, Footer, and Script -->
+    <!-- You already pasted the updated version with orange in the previous steps -->
+    <!-- You can now paste that "Location & Footer" section with orange bubbles and icons from the previous message -->
+
+    <!-- Carousel Script -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+   
+  const hero = document.getElementById('hero');
+  const whatsappBtn = document.getElementById('whatsappBtn');
+
+  window.addEventListener('scroll', () => {
+    const heroBottom = hero.offsetTop + hero.offsetHeight;
+    if (window.scrollY > heroBottom - 100) {
+      whatsappBtn.classList.remove('hidden');
+    } else {
+      whatsappBtn.classList.add('hidden');
+    }
+  });
+</script>
+
+    <script>
+  function carousel() {
+    return {
+      current: 0,
+      timer: null,
+      desktopImages: [
+        'herosection.jpg',
+        'herosection2.jpg'
+      ],
+      mobileImages: [
+        'herosection-mobile.jpg',
+        'herosection2-mobile.jpg'
+      ],
+      currentImages: [],
+      start() {
+        // Delay execution to ensure screen size is read after page loads
+        this.$nextTick(() => {
+          const isMobile = window.innerWidth < 768;
+          this.currentImages = isMobile ? this.mobileImages : this.desktopImages;
+
+          this.timer = setInterval(() => {
+            this.current = (this.current + 1) % this.currentImages.length;
+          }, 5000);
+        });
+      }
+    };
+  }
+</script>
+
+
+  </body>
+</html>
